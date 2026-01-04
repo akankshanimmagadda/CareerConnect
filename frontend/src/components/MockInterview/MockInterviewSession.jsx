@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { Context } from "../../main";
+import API_BASE_URL from "../../config";
 import { useParams, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { FaRobot, FaPaperPlane, FaCheckCircle, FaInfoCircle, FaCode, FaExpand, FaVideo, FaMicrophone, FaDesktop, FaComments, FaTerminal, FaUser, FaPlay } from "react-icons/fa";
@@ -85,7 +86,7 @@ const MockInterviewSession = () => {
 
   const fetchInterviewDetails = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:4000/api/v1/mock/${id}`, {
+      const { data } = await axios.get(`${API_BASE_URL}/api/v1/mock/${id}`, {
         withCredentials: true,
       });
       const interviewData = data.mockInterview || data.interview;
@@ -352,7 +353,7 @@ const MockInterviewSession = () => {
     setLoading(true);
     try {
       await axios.post(
-        "http://localhost:4000/api/v1/mock/submit",
+        `${API_BASE_URL}/api/v1/mock/submit`,
         {
           interviewId: id,
           questionId: interview?.questions?.[currentQuestionIndex]?._id,
@@ -388,7 +389,7 @@ const MockInterviewSession = () => {
   const handleFinishInterview = async () => {
     try {
       await axios.post(
-        "http://localhost:4000/api/v1/mock/finish",
+        `${API_BASE_URL}/api/v1/mock/finish`,
         { interviewId: id },
         { withCredentials: true }
       );

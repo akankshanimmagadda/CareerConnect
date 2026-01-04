@@ -3,6 +3,7 @@ import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { MdOutlineMailOutline } from "react-icons/md";
+import API_BASE_URL from "../../config";
 
 const VerifyEmail = () => {
   const location = useLocation();
@@ -20,7 +21,7 @@ const VerifyEmail = () => {
     setLoading(true);
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/v1/user/verify-email",
+        `${API_BASE_URL}/api/v1/user/verify-email`,
         { email, otp },
         {
           headers: {
@@ -41,7 +42,7 @@ const VerifyEmail = () => {
   const handleResend = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/v1/user/resend-verification",
+        `${API_BASE_URL}/api/v1/user/resend-verification`,
         { email }
       );
       toast.success(res.data.message);

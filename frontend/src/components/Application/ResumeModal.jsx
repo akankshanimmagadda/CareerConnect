@@ -1,9 +1,10 @@
 import React from "react";
+import API_BASE_URL from "../../config";
 
 const ResumeModal = ({ imageUrl, onClose }) => {
   const isPDF = imageUrl && imageUrl.toLowerCase().endsWith(".pdf");
   const fullImageUrl = imageUrl && !imageUrl.startsWith("http") 
-    ? `http://localhost:4000${imageUrl}` 
+    ? `${API_BASE_URL}${imageUrl}` 
     : imageUrl;
 
   return (

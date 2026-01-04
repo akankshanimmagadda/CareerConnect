@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { Context } from "../../main";
 import { Link } from "react-router-dom";
+import API_BASE_URL from "../../config";
 
 const SavedJobs = () => {
   const { isAuthorized } = useContext(Context);
@@ -11,7 +12,7 @@ const SavedJobs = () => {
   useEffect(() => {
     const fetchSaved = async () => {
       try {
-        const { data } = await axios.get("http://localhost:4000/api/v1/job/saved", { withCredentials: true });
+        const { data } = await axios.get(`${API_BASE_URL}/api/v1/job/saved`, { withCredentials: true });
         if (data && data.saved) setSaved(data.saved);
       } catch (err) {
         console.error(err);

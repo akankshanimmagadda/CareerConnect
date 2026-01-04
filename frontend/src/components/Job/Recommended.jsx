@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Context } from "../../main";
+import API_BASE_URL from "../../config";
 
 const Recommended = () => {
   const { isAuthorized } = useContext(Context);
@@ -12,7 +13,7 @@ const Recommended = () => {
     const fetchRecs = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:4000/api/v1/job/recommendations",
+          `${API_BASE_URL}/api/v1/job/recommendations`,
           { withCredentials: true }
         );
         if (data && data.recommendations) setRecs(data.recommendations);

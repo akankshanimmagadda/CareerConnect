@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import API_BASE_URL from "../../config";
 
 const VerifyPending = () => {
   const location = useLocation();
@@ -17,7 +18,7 @@ const VerifyPending = () => {
     setResending(true);
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/v1/user/resend-verification",
+        `${API_BASE_URL}/api/v1/user/resend-verification`,
         { email }
       );
       toast.success(res.data.message);

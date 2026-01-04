@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Context } from "../../main";
+import API_BASE_URL from "../../config";
 import { useNavigate } from "react-router-dom";
 
 const ResumeAnalyzer = () => {
@@ -26,7 +27,7 @@ const ResumeAnalyzer = () => {
     formData.append("resume", resumeFile);
     formData.append("jobDescription", jobDescription);
     try {
-      const { data } = await axios.post("http://localhost:4000/api/v1/analyzer/resume", formData, {
+      const { data } = await axios.post(`${API_BASE_URL}/api/v1/analyzer/resume`, formData, {
         withCredentials: true,
         headers: { "Content-Type": "multipart/form-data" },
       });
@@ -183,7 +184,7 @@ const ResumeAnalyzer = () => {
             {result.resumeUrl && (
               <div style={{ textAlign: "center", marginTop: "20px" }}>
                 <a
-                  href={`http://localhost:4000${result.resumeUrl}`}
+                  href={`${API_BASE_URL}${result.resumeUrl}`}
                   target="_blank"
                   rel="noreferrer"
                   className="applyLink"

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import axios from "axios";
 import { Context } from "../../main";
+import API_BASE_URL from "../../config";
 import { RiChat3Line, RiCloseLine, RiSendPlane2Line } from "react-icons/ri";
 import toast from "react-hot-toast";
 
@@ -37,7 +38,7 @@ const Chatbot = () => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/v1/user/chat",
+        `${API_BASE_URL}/api/v1/user/chat`,
         { messages: [...messages, userMessage] },
         {
           withCredentials: true,

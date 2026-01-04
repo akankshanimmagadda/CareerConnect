@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../../main";
+import API_BASE_URL from "../../config";
 import { 
   FaBriefcase, FaBuilding, FaMapMarkerAlt, FaMoneyBillWave, 
   FaCalendarAlt, FaInfoCircle, FaTasks, FaGraduationCap, FaGift, FaLink 
@@ -18,7 +19,7 @@ const JobDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/api/v1/job/${id}`, {
+      .get(`${API_BASE_URL}/api/v1/job/${id}`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -26,7 +27,7 @@ const JobDetails = () => {
         // if user is job seeker, check if already applied
         if (user && user.role !== "Employer") {
           axios
-            .get(`http://localhost:4000/api/v1/application/check?jobId=${id}`, {
+            .get(`${API_BASE_URL}/api/v1/application/check?jobId=${id}`, {
               withCredentials: true,
             })
             .then((r) => {

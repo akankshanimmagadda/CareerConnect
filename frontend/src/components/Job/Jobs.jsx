@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../../main";
+import API_BASE_URL from "../../config";
 
 const Jobs = () => {
   const [jobs, setJobs] = useState([]);
@@ -24,7 +25,7 @@ const Jobs = () => {
   const navigateTo = useNavigate();
   const fetchJobs = async (params = {}) => {
     try {
-      const { data } = await axios.get("http://localhost:4000/api/v1/job/getall", {
+      const { data } = await axios.get(`${API_BASE_URL}/api/v1/job/getall`, {
         params: { ...params, page: currentPage },
         withCredentials: true,
       });
@@ -41,7 +42,7 @@ const Jobs = () => {
 
   const fetchSaved = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/v1/job/saved", { withCredentials: true });
+      const res = await axios.get(`${API_BASE_URL}/api/v1/job/saved`, { withCredentials: true });
       if (res.data && res.data.saved) {
         setSavedIds(res.data.saved.map((j) => j._id));
       }
@@ -287,7 +288,7 @@ const Jobs = () => {
                             onClick={async () => {
                               try {
                                 const r = await axios.post(
-                                  `http://localhost:4000/api/v1/job/save/${element._id}`,
+                                  `${API_BASE_URL}/api/v1/job/save/${element._id}`,
                                   {},
                                   { withCredentials: true }
                                 );

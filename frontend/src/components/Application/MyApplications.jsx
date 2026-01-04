@@ -4,6 +4,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import ResumeModal from "./ResumeModal";
+import API_BASE_URL from "../../config";
 
 const MyApplications = () => {
   const { user } = useContext(Context);
@@ -27,7 +28,7 @@ const MyApplications = () => {
       if (user && user.role === "Employer") {
         const delayDebounceFn = setTimeout(() => {
           axios
-            .get("http://localhost:4000/api/v1/application/employer/getall", {
+            .get(`${API_BASE_URL}/api/v1/application/employer/getall`, {
               params: { skills: skillFilter, experience: expFilter },
               withCredentials: true,
             })
@@ -38,7 +39,7 @@ const MyApplications = () => {
         return () => clearTimeout(delayDebounceFn);
       } else {
         axios
-          .get("http://localhost:4000/api/v1/application/jobseeker/getall", {
+          .get(`${API_BASE_URL}/api/v1/application/jobseeker/getall`, {
             withCredentials: true,
           })
           .then((res) => {
@@ -57,7 +58,7 @@ const MyApplications = () => {
   const deleteApplication = (id) => {
     try {
       axios
-        .delete(`http://localhost:4000/api/v1/application/delete/${id}`, {
+        .delete(`${API_BASE_URL}/api/v1/application/delete/${id}`, {
           withCredentials: true,
         })
         .then((res) => {
@@ -175,7 +176,7 @@ const MyApplications = () => {
                       onStatusChange={async (id, status, interviewDate, interviewStatus, zoomLink) => {
                         try {
                           const res = await axios.put(
-                            `http://localhost:4000/api/v1/application/status/${id}`,
+                            `${API_BASE_URL}/api/v1/application/status/${id}`,
                             { status, interviewDate, interviewStatus, zoomLink },
                             { withCredentials: true }
                           );

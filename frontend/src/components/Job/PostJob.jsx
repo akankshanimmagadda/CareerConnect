@@ -3,6 +3,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../../main";
+import API_BASE_URL from "../../config";
 import { 
   FaBriefcase, FaBuilding, FaGlobe, FaMapMarkerAlt, FaMoneyBillWave, 
   FaListAlt, FaInfoCircle, FaGraduationCap, FaTasks, FaGift, FaLink, FaUser 
@@ -76,7 +77,7 @@ const PostJob = () => {
 
     await axios
       .post(
-        "http://localhost:4000/api/v1/job/post",
+        `${API_BASE_URL}/api/v1/job/post`,
         jobData,
         {
           withCredentials: true,

@@ -6,6 +6,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Context } from "../../main";
+import API_BASE_URL from "../../config";
 
 const NewRegister = () => {
   const [email, setEmail] = useState("");
@@ -34,7 +35,7 @@ const NewRegister = () => {
     }
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/v1/user/register",
+        `${API_BASE_URL}/api/v1/user/register`,
         { name, email, role, password },
         {
           headers: { "Content-Type": "application/json" },

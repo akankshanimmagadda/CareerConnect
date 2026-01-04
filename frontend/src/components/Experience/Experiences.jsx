@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Context } from "../../main";
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from "../../config";
 import toast from "react-hot-toast";
 import { FaPlus, FaBuilding, FaUser, FaCalendarAlt, FaComments, FaPaperPlane, FaChevronDown, FaChevronUp } from "react-icons/fa";
 
@@ -22,7 +23,7 @@ const Experiences = () => {
 
   const fetchExperiences = async (q = "") => {
     try {
-      const { data } = await axios.get("http://localhost:4000/api/v1/experience/getall", {
+      const { data } = await axios.get(`${API_BASE_URL}/api/v1/experience/getall`, {
         params: { q, page: currentPage },
         withCredentials: true,
       });
@@ -48,7 +49,7 @@ const Experiences = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/v1/experience/post",
+        `${API_BASE_URL}/api/v1/experience/post`,
         { title, company, description },
         {
           withCredentials: true,
@@ -72,7 +73,7 @@ const Experiences = () => {
     setSubmittingComment(true);
     try {
       const { data } = await axios.post(
-        `http://localhost:4000/api/v1/experience/comment/${expId}`,
+        `${API_BASE_URL}/api/v1/experience/comment/${expId}`,
         { comment: commentText },
         { withCredentials: true }
       );
