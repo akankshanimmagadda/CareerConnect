@@ -1,77 +1,97 @@
-# Job Portal App with MERN Stack
+# CareerConnect - Job Portal
 
-A comprehensive job portal application built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. This application allows users to browse job listings, apply for jobs, and manage their applications seamlessly.
+CareerConnect is a comprehensive job portal built using the MERN stack. It offers a platform for job seekers to find opportunities and for employers to manage job listings and applications.
 
-## Features
+## 🚀 Features
 
-- **User Authentication:** Secure authentication using JWT (JSON Web Tokens) for both job seekers and employers.
-- **Job Listings:** Browse through a wide range of job listings fetched from MongoDB.
-- **Application Management:** Job seekers can manage their job applications, and employers can view and manage received applications.
-- **Responsive Design:** Ensures a seamless experience across all devices.
+- **User Authentication:** Secure JWT-based authentication for Job Seekers and Employers.
+- **Job Management:** Employers can post, update, and delete jobs. Job seekers can browse and apply.
+- **Peer Interviews:** Connect with others for peer-to-peer interview practice using PeerJS and Socket.io.
+- **Interview Experiences:** Share and read interview experiences from other candidates.
+- **Real-time Chat:** Integrated messaging features.
+- **Responsive Design:** Fully responsive UI built with React and modern CSS.
 
-## Technologies Used
+## 🛠️ Tech Stack
 
-- **Frontend:** React.js, React Router, Bootstrap
-- **Backend:** Node.js, Express.js, MongoDB
-- **Authentication:** JWT (JSON Web Tokens), Bcrypt (for password hash)
-- **Image Upload:** Cloudinary for storing and managing uploaded images
-- **Deployment:** Vercel (frontend), Render(backend), MongoDB Atlas (database)
+- **Frontend:** React.js, Vite, Tailwind CSS (or custom CSS), PeerJS
+- **Backend:** Node.js, Express.js, MongoDB, Socket.io
+- **File Handling:** Cloudinary (for images), Mammoth (DOCX), PDF-parse
+- **Authentication:** JWT, Bcrypt, Validator
+- **Communication:** Nodemailer (Email verification)
 
-## Getting Started
-
-To get a local copy up and running follow these simple steps.
+## 🏁 Getting Started
 
 ### Prerequisites
 
-- Node.js installed on your machine with latest version or v22.2.0 above
-- MongoDB Atlas account (or local MongoDB server)
-- Cloudinary account for image storage
-
+- Node.js (v22.2.0 or above)
+- MongoDB Atlas account or local MongoDB
+- Cloudinary account
 ### Installation
 
-1. Clone the repo:
+1. **Clone the repository:**
    ```sh
-   git clone https://github.com/exclusiveabhi/react-job-portal.git
+   git clone https://github.com/akankshanimmagadda/CareerConnect.git
+   cd CareerConnect
    ```
-2. Install NPM packages:
 
+2. **Install dependencies:**
    ```sh
-   cd react-job-portal
+   # Install backend dependencies
    cd backend
    npm install
-   cd..
-   cd frontend
+
+   # Install frontend dependencies
+   cd ../frontend
    npm install
    ```
 
-3. ## If you don't want to change the`.env` credentials skip step 4 and move to step 5.
-
-4. Set up environment variables:
-
-   - Create a `config.env` file after creating a `config folder` in the backend directory, containing the following variables:
-
+3. **Environment Configuration:**
+   Create a `.env` file in the `backend` directory and add the following:
    ```env
-   PORT=
-   CLOUDINARY_API_KEY=
-   CLOUDINARY_API_SECRET=
-   CLOUDINARY_CLOUD_NAME=
-   FRONTEND_URL=
-   DB_URL=
-   JWT_SECRET_KEY=
-   JWT_EXPIRE=
-   COOKIE_EXPIRE=
+   PORT=4000
+   MONGO_URI=your_mongodb_uri
+   JWT_SECRET_KEY=your_secret_key
+   JWT_EXPIRE=7d
+   COOKIE_EXPIRE=7
+   CLOUDINARY_CLOUD_NAME=your_cloud_name
+   CLOUDINARY_API_KEY=your_api_key
+   CLOUDINARY_API_SECRET=your_api_secret
+   FRONTEND_URL=http://localhost:5173
+   EMAIL_USER=your_email
+   EMAIL_PASS=your_email_password
    ```
 
-   Replace each value with your specific configuration details.
+### Running the Application
 
-5. Run the application backend (make sure you are in `/backend` directory) :
-
+1. **Start the Backend:**
    ```sh
-   node server.js
-   ```
-
-6. Run the application frontend (make sure you are in `/frontend` directory) :
-   ```sh
+   cd backend
    npm run dev
    ```
-7. Open your browser and navigate to `http://localhost:5173` to view the app.
+
+2. **Start the Frontend:**
+   ```sh
+   cd frontend
+   npm run dev
+   ```
+
+3. **Access the app:**
+   Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+## 🤝 Contributing
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+Distributed under the ISC License.
+
+## 📧 Contact
+
+Akanksha Nimmagadda - [GitHub](https://github.com/akankshanimmagadda)
+
+Project Link: [https://github.com/akankshanimmagadda/CareerConnect](https://github.com/akankshanimmagadda/CareerConnect)
